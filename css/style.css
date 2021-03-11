@@ -1,1 +1,299 @@
-afgaag
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.header_block {
+    display: flex;
+    flex-direction: column;
+    background: no-repeat url("/img/background.jpg");
+    height: 866px;
+
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    width: 100%;
+    height: 72px;
+
+}
+
+.header_left {
+    display: flex;
+    margin-left: 165px;
+}
+
+.header_logo {
+    margin-top: 22px;
+}
+
+.header_menu {
+    margin-top: 26px;
+    display: flex;
+    font-family: 'Manrope';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.header_menu-item {
+    margin-left: 32px;
+}
+
+
+.header_right {
+    display: flex;
+    justify-content: end;
+    margin-right: 165px;
+}
+
+.header_social {
+    margin-left: 12px;
+    margin-top: 16px;
+}
+
+.header_desc-left {
+    margin-left: 165px;
+}
+
+.header_desc-block {
+    display: flex;
+    flex-direction: row;
+    margin-top: 85px;
+}
+
+.header_desc {
+    max-width: 730px;
+    margin-top: 72px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 98px;
+}
+
+.header_desc-button {
+    margin-top: 32px;
+    padding: 16px 41px;
+    background: rgba(140, 48, 245, 1);
+    border-radius: 8px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: white;
+}
+
+/* logos start */
+
+.logos_block {
+    margin-top: 604px;
+    margin-bottom: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(192, 204, 218, 0.7);
+    border-bottom: 1px solid rgba(192, 204, 218, 0.7);
+    padding-bottom: 24px;
+    text-align: center;
+
+}
+
+.logos_item {
+    margin-right: 64px;
+}
+
+/* logos end */
+
+/*  tailor start*/
+
+.tailor_block {
+    margin-top: 64px;
+
+}
+
+.tailor_header-head {
+    margin-bottom: 8px;
+    text-align: center;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 64px;
+}
+
+.tailor_header-desc {
+    max-width: 540px;
+    margin: 0 auto;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.tailor_cards {
+    margin: 0 auto;
+    margin-top: 48px;
+    margin-bottom: 64px;
+    display: grid;
+    max-width: 1110px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 64px;
+}
+
+.tailor_card {
+    grid-column: span 2;
+    /* height: 200px; */
+}
+
+.tailor_card-header {
+    margin-bottom: 8px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.tailor_card-desc {
+    max-width: 350px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+}
+
+.tailor_card-ico {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* tailor end */
+
+/*  */
+
+.real_block {
+    /* height: 896px; */
+    background: rgba(213, 250, 252, 1);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 64px;
+    margin-bottom: 100px;
+}
+
+.real_left {
+    grid-column: span 3;
+}
+
+.real_right {
+    grid-column: span 3;
+}
+
+.real_header {
+    display: flex;
+    margin-top: 64px;
+    margin-left: 165px;
+    margin-bottom: 128px;
+    /* flex-direction: row; */
+}
+
+.real_header-head {
+    max-width: 445px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 64px;
+}
+
+.real_header-desc {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 40;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.real_header-ico {
+    position: relative;
+}
+
+.real_header-text {
+    position: absolute;
+    transform: translate(21%, 35%);
+}
+
+.real_card {
+    background: white;
+    padding: 32px;
+    box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+    border-radius: 8px;
+}
+
+.left_card {
+    max-width: 286px;
+    margin: 0 0 0 auto;
+}
+
+.right_top-card {
+    max-width: 381px;
+    margin-top: 168px;
+    margin-bottom: 32px;
+}
+
+#right_top-desc-text {
+    max-width: 349px;
+}
+
+.right_bottom-card {
+    max-width: 286px;
+    margin-bottom: 80px;
+}
+
+
+.real_card-header {
+    margin-bottom: 32px;
+}
+
+.real_card-content {
+    display: flex;
+}
+
+.real_card-desc {
+    margin-left: 16px;
+    max-width: 254px;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.real_card-desc-name {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    margin-top: 24px;
+}
+
+.real_card-desc-position {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #969BAB;
+}
+
+/*  */
