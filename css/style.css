@@ -34,10 +34,6 @@ body {
     padding: 22px 0;
 }
 
-.header_active {
-    background: rgba(140, 48, 245, 0.08);
-}
-
 .header_left {
     display: flex;
     margin-left: 165px;
@@ -45,7 +41,6 @@ body {
 }
 
 .header__nav {
-    /* margin-top: 26px; */
     display: flex;
     align-items: center;
     font-weight: 700;
@@ -53,13 +48,57 @@ body {
     line-height: 20px;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    padding: 5px;
+    min-width: 100px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+
+.dropdown-item {
+    text-decoration: none;
+    color: #000;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 .header__nav-item {
+    color: black;
     margin-left: 32px;
     text-decoration: none;
 }
 
+.header__nav-more {
+    position: absolute;
+    content: "";
+    top: 0%;
+    left: 30%;
+    width: 100%;
+    height: 100%;
+    background: url(../img/svg/chevron.svg) no-repeat right;
+}
+
+.header__nav-more:hover,
+.header__nav-more:active>* {
+    transform: rotate(180deg) translateX(-80%);
+}
+
 .header__nav-item:hover,
-.header__nav-item:focus {
+.header__nav-item:focus,
+.dropdown-item:hover,
+.dropdown-item:focus {
     color: #8C30F5;
 }
 
@@ -73,8 +112,6 @@ body {
 
 .header_social {
     margin-left: 12px;
-    /* max-height: 40px; */
-    /* margin-top: 16px; */
 }
 
 .header_social-ico:hover,
@@ -123,9 +160,16 @@ body {
 .header__burger {
     display: none;
     width: 40px;
-    height: 28px;
+    height: 29px;
     margin-left: 30px;
     position: relative;
+}
+
+.header__burger:hover,
+.header__burger:active,
+.header__burger:focus {
+    transform: scale(1.05);
+    transition: 0.3s;
 }
 
 .burger__line {
@@ -133,7 +177,7 @@ body {
     left: 0;
     display: block;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background-color: rgba(140, 48, 245, 1);
 }
 
@@ -151,7 +195,6 @@ body {
 }
 
 /* logos start */
-
 .logos_block {
     margin-top: 604px;
     margin-bottom: 16px;
@@ -160,7 +203,6 @@ body {
     border-bottom: 1px solid rgba(192, 204, 218, 0.7);
     padding-bottom: 24px;
     text-align: center;
-
 }
 
 .logos_item {
@@ -176,10 +218,8 @@ body {
 /* logos end */
 
 /*  tailor start*/
-
 .tailor_block {
     margin-top: 64px;
-
 }
 
 .tailor_header-head {
@@ -210,6 +250,7 @@ body {
 
 .tailor_card {
     grid-column: span 2;
+    margin-bottom: 48px;
 }
 
 .tailor_card-header {
@@ -236,7 +277,6 @@ body {
 /* tailor end */
 
 /* real start */
-
 .real_block {
     background: rgba(213, 250, 252, 1);
     display: grid;
@@ -308,7 +348,6 @@ body {
     margin-bottom: 80px;
 }
 
-
 .real_card-header {
     margin-bottom: 32px;
 }
@@ -343,7 +382,6 @@ body {
 
 
 /* achiev start */
-
 .achiev {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -373,11 +411,11 @@ body {
 }
 
 .achiev_right {
-
     grid-column: span 6;
-    display: grid;
-    /* justify-content: space-between;
-    flex-wrap: wrap; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0 10px;
     max-width: 540px;
 }
 
@@ -490,7 +528,6 @@ body {
 /*headline end*/
 
 /*fashion start  */
-
 .fashion {
     margin: 0 auto;
     padding: 64px 0;
@@ -657,16 +694,10 @@ body {
 /* foorer end */
 
 /* Media start */
-
 @media screen and (max-width: 1024px) {
-    .wrapper-lg {
-        max-width: 1024px;
-    }
 
-    .wrapper {
-        max-width: 1024px;
-    }
-
+    .wrapper-lg,
+    .wrapper,
     .header_block {
         max-width: 1024px;
     }
@@ -676,8 +707,7 @@ body {
     }
 
     .header_right {
-        margin-right: auto;
-        margin-left: 65px;
+        margin: 0 65px;
     }
 
     .header_desc-left {
@@ -713,8 +743,6 @@ body {
     .left_card {
         max-width: 360px;
     }
-
-
 
     .real_card-desc {
         max-width: 324px;
@@ -758,16 +786,12 @@ body {
         line-height: 68px;
     }
 
-    .header_left {
-        margin-left: 65px;
-    }
-
-    .header_right {
-        margin-right: 65px;
-    }
-
     .header_logo {
         margin-left: 30px;
+    }
+
+    .header_social {
+        display: none;
     }
 
     .header__burger {
@@ -777,15 +801,26 @@ body {
 
     .header__nav {
         position: fixed;
+        display: flex;
+        flex-direction: column;
+        padding-top: 120px;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
-        background-color: #0E1D28;
+        background-color: white;
         z-index: 16;
-        padding: 75px;
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 24px;
         transform: translateX(100%);
         transition: .4s all linear;
+    }
+
+    .header__nav-item {
+        margin-left: 0;
+        margin-bottom: 10px;
+        color: black;
     }
 
     .header__nav_active {
@@ -837,6 +872,14 @@ body {
         margin-right: 30px;
     }
 
+    .tailor_cards {
+        margin-bottom: 40px;
+    }
+
+    .tailor_card {
+        margin-bottom: 40px;
+    }
+
     .real_header {
         margin-left: 35px;
     }
@@ -863,10 +906,7 @@ body {
     }
 
     .achiev_right {
-        grid-column: span 6;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        padding: 0;
     }
 
     .achiev_right-card {
@@ -881,7 +921,6 @@ body {
     }
 
     .achiev_left-header {
-        margin-bottom: 8px;
         font-size: 38px;
         line-height: 44px;
     }
@@ -1019,18 +1058,12 @@ body {
         font-size: 32px;
     }
 
-    .tailor_header-desc {
-        font-size: 18px;
-    }
-
     .tailor_cards {
-        padding: 0 10px;
         margin-bottom: 0;
     }
 
     .tailor_card {
         grid-column: span 3;
-        margin-bottom: 40px;
         height: 220px;
         display: flex;
         flex-direction: column;
@@ -1107,12 +1140,8 @@ body {
 
     .achiev_right {
         grid-column: span 12;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        padding: 0 10px;
+        max-width: 100%;
     }
-
 
     .achiev_right-card {
         width: 165px;
@@ -1130,9 +1159,7 @@ body {
     .headline {
         display: flex;
         flex-direction: column-reverse;
-        margin-bottom: 0;
         max-height: 700px;
-        width: 100%;
         background: #F1E4FF;
         border-radius: 0;
         padding-bottom: 0;
@@ -1167,7 +1194,6 @@ body {
 
     .fashion_text {
         display: block;
-        margin-bottom: 48px;
         text-align: center;
     }
 
@@ -1198,12 +1224,11 @@ body {
     .manage_text {
         text-align: center;
         padding: 64px 15px;
-        margin-left: 0;
+        margin: 0 auto;
     }
 
     .manage_photo-block {
         display: none;
-
     }
 
     .footer {
@@ -1243,7 +1268,6 @@ body {
         font-size: 16px;
         line-height: 24px;
     }
-
 }
 
 @media screen and (max-width: 400px) {
@@ -1262,22 +1286,18 @@ body {
         max-width: 400px;
     }
 
-    .header_social {
-        display: none;
-    }
-
     .header_desc {
         font-size: 20px;
         line-height: 30px;
     }
 
     .header_desc-left {
-        margin-left: 20px;
         max-width: 250px;
     }
 
     .header_desc-button {
         margin-top: 25px;
+        margin-left: 0;
         padding: 10px 33px;
         font-size: 16px;
         line-height: 20px;
@@ -1289,9 +1309,6 @@ body {
 
     .logos_block {
         margin-top: 5px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
     }
 
     .logos_item {
@@ -1310,121 +1327,28 @@ body {
         font-size: 16px;
     }
 
-    .tailor_cards {
-        padding: 0 10px;
-        margin-bottom: 0;
-    }
-
     .tailor_card {
-        grid-column: span 3;
-        margin-bottom: 40px;
         height: 300px;
-        display: flex;
-        flex-direction: column;
     }
 
     .tailor_card-head {
         min-height: 120px;
     }
 
-    .tailor_card-desc {
-        display: flex;
-        align-items: center;
-    }
-
-    .tailor_card-ico {
-        margin-bottom: 12px;
-    }
-
-    .real_left {
-        grid-column: span 6;
-    }
-
-    .real_right {
-        grid-column: span 6;
-    }
-
-    .real_card {
-        margin-left: 25px;
-        margin-right: 25px;
-    }
-
-    .right_top-card {
-        margin-top: 30px;
-    }
-
     .real_header-text {
         transform: translate(0%, 50%);
     }
-
-    .right_bottom-card {
-        max-width: 381px;
-        margin-bottom: 30px;
-    }
-
-    .achiev {
-        margin: 40px auto;
-    }
-
 
     .achiev_right-card {
         display: grid;
         grid-column: span 6;
         margin-left: 0;
         margin-bottom: 30px;
-    }
-
-    .achiev_left {
-        padding: 10px;
-        margin: 0 auto 30px;
-        text-align: center;
-    }
-
-    .achiev_left-header {
-        font-size: 34px;
-        line-height: 40px;
-    }
-
-    .achiev_right {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 0;
-    }
-
-
-    .achiev_right-card {
         width: 165px;
-        margin-bottom: 20px;
-    }
-
-    .achiev_right-card-ico {
-        margin: 0 auto 10px;
-    }
-
-    .achiev_right-card-content {
-        margin: 0;
-    }
-
-    .headline {
-        display: flex;
-        flex-direction: column-reverse;
-        margin-bottom: 0;
-        max-height: 700px;
-        width: 100%;
-        background: #F1E4FF;
-        border-radius: 0;
-        padding-bottom: 0;
     }
 
     .headline_content {
-        text-align: center;
         margin: 20px 15px;
-
-    }
-
-    .headline_content-text {
-        padding-right: 0;
     }
 
     .headline_pic {
@@ -1436,13 +1360,7 @@ body {
     }
 
     .fashion {
-        padding-bottom: 0;
-    }
-
-    .fashion_text-header {
-        margin: 0 auto 20px;
-        font-size: 36px;
-        line-height: 52px;
+        padding-bottom: 60px;
     }
 
     .fashion_pic {
@@ -1450,44 +1368,9 @@ body {
         width: 100%;
     }
 
-    .manage {
-        padding: 0;
-    }
-
-    .manage_text-header {
-        font-size: 36px;
-        line-height: 60px;
-    }
-
-    .manage_text-desc {
-        margin-top: 20px;
-    }
-
-    .manage_text {
-        padding: 64px 15px;
-    }
-
-    .manage_photo-block {
-        display: none;
-    }
-
-    .footer {
-        padding: 20px 0;
-    }
-
-    .footer-icon {
-        display: none;
-    }
-
     .footer-nav {
         padding-left: 15px;
         margin-top: 0;
-    }
-
-    .footer-nav-copy {
-        padding-left: 15px;
-        font-size: 10px;
-        line-height: 20px;
     }
 
     .footer-text-icons {
@@ -1495,13 +1378,8 @@ body {
     }
 
     .footer-text-icons-head {
-        margin-bottom: 10px;
         font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
     }
 }
-
-
 
 /* media end */

@@ -1,72 +1,83 @@
-(function () {
-    const header = document.querySelector('.header');
-    window.onscroll = () => {
-        if (window.pageYOffset > 50) {
-            header.classList.add('header_active')
-        } else {
-            header.classList.remove('header_active')
-        }
-    };
-}());
-
 // burger handler
 
+(function () {
+    const burgerItem = document.querySelector('.burger');
+    const menu = document.querySelector('.header__nav');
+    const menuCloseItem = document.querySelector('.header__nav-close');
+    const menuLinks = document.querySelectorAll('.header__nav-item');
+    burgerItem.addEventListener('click', () => {
+        menu.classList.add('header__nav_active');
+    });
+    menuCloseItem.addEventListener('click', () => {
+        menu.classList.remove('header__nav_active');
+    });
+    if (window.innerWidth <= 865) {
+        for (let i = 0; i < menuLinks.length; i += 1) {
+            menuLinks[i].addEventListener('click', () => {
+                menu.classList.remove('header__nav_active');
+            });
+        }
+    }
+}());
+
+// more menu
+
 // (function () {
-//     const burgerItem = document.querySelector('.burger');
-//     const menu = document.querySelector('.header__nav');
+//     const moreItem = document.querySelector('.last_item');
+//     const menu = document.querySelector('.header__nav-more');
 //     const menuCloseItem = document.querySelector('.header__nav-close');
-//     const menuLinks = document.querySelectorAll('.header__nav-item');
-//     burgerItem.addEventListener('click', () => {
-//         menu.classList.add('header__nav_active');
+//     const menuLinks = document.querySelectorAll('.header__nav-more');
+//     moreItem.addEventListener('click', () => {
+//         menu.classList.add('.header__nav-more-active');
 //     });
 //     menuCloseItem.addEventListener('click', () => {
-//         menu.classList.remove('header__nav_active');
+//         menu.classList.remove('header__nav-more-active');
 //     });
-//     if (window.innerWidth <= 865) {
+//     if (window.innerWidth <= 1440) {
 //         for (let i = 0; i < menuLinks.length; i += 1) {
 //             menuLinks[i].addEventListener('click', () => {
-//                 menu.classList.remove('header__nav_active');
+//                 menu.classList.remove('header__nav-more-active');
 //             });
 //         }
 //     }
 // }());
 
 // Scroll to anchors
-// (function () {
+(function () {
 
-//     const smoothScroll = function (targetEl, duration) {
-//         const headerElHeight = document.querySelector('.header').clientHeight;
-//         let target = document.querySelector(targetEl);
-//         let targetPosition = target.getBoundingClientRect().top - headerElHeight;
-//         let startPosition = window.pageYOffset;
-//         let startTime = null;
+    const smoothScroll = function (targetEl, duration) {
+        const headerElHeight = document.querySelector('.header').clientHeight;
+        let target = document.querySelector(targetEl);
+        let targetPosition = target.getBoundingClientRect().top - headerElHeight;
+        let startPosition = window.pageYOffset;
+        let startTime = null;
 
-//         const ease = function (t, b, c, d) {
-//             t /= d / 2;
-//             if (t < 1) return c / 2 * t * t + b;
-//             t--;
-//             return -c / 2 * (t * (t - 2) - 1) + b;
-//         };
+        const ease = function (t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
+        };
 
-//         const animation = function (currentTime) {
-//             if (startTime === null) startTime = currentTime;
-//             const timeElapsed = currentTime - startTime;
-//             const run = ease(timeElapsed, startPosition, targetPosition, duration);
-//             window.scrollTo(0, run);
-//             if (timeElapsed < duration) requestAnimationFrame(animation);
-//         };
-//         requestAnimationFrame(animation);
+        const animation = function (currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, targetPosition, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
+        };
+        requestAnimationFrame(animation);
 
-//     };
+    };
 
-//     const scrollTo = function () {
-//         const links = document.querySelectorAll('.js-scroll');
-//         links.forEach(each => {
-//             each.addEventListener('click', function () {
-//                 const currentTarget = this.getAttribute('href');
-//                 smoothScroll(currentTarget, 1000);
-//             });
-//         });
-//     };
-//     scrollTo();
-// }());
+    const scrollTo = function () {
+        const links = document.querySelectorAll('.js-scroll');
+        links.forEach(each => {
+            each.addEventListener('click', function () {
+                const currentTarget = this.getAttribute('href');
+                smoothScroll(currentTarget, 1000);
+            });
+        });
+    };
+    scrollTo();
+}());
